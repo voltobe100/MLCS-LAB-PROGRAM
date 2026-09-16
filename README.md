@@ -1,102 +1,84 @@
-# MLCS LAB PROGRAM
+# MLCS Lab Programs
 
-This repository contains the Machine Learning and Cyber Security (MLCS) laboratory experiments, ranging from **Experiment 1 to Experiment 6**, along with dataset utilities, trained model artifacts, and network traffic anomaly analysis scripts.
+This repository contains my **Machine Learning and Cyber Security (MLCS) Lab** programs for Experiments 1–6.
 
----
-
-## 📌 Repository Overview
-
-| Experiment | Title | Description | Model / Technique | Output Artifact |
-|---|---|---|---|---|
-| **Exp 1** | Time Series Decomposition | Decomposes network traffic into Trend, Seasonal, and Residual components to analyze DDoS spikes. | `statsmodels` (Additive Model) | `time_series_decomposition.png` |
-| **Exp 2** | Traffic Forecasting & DDoS Detection | Fits an ARIMA model on time-series network data to set a baseline and flag statistical anomalies (DDoS attacks). | ARIMA `(2, 1, 2)` | `ddos_forecast_plot.png` |
-| **Exp 3** | Cyber Attack Classification | Classifies network flow data into Normal vs. Attack traffic. | Random Forest Classifier | `cyber_attack_classification.png` |
-| **Exp 4** | Phishing URL Detection | Detects phishing websites using character-level n-gram features from URL strings. | TF-IDF + Logistic Regression | `phishing_confusion_matrix.png`, `phishing_url_model.pkl` |
-| **Exp 5** | Malicious URL Classification | High-accuracy malicious URL identification trained on balanced URL datasets. | TF-IDF + Support Vector Machine (SVM) | `exp5_svm_confusion_matrix.png`, `exp5_svm_model.pkl` |
-| **Exp 6** | URL Abnormal Pattern Detection | Custom feature extraction (Shannon entropy, URL/hostname length, IP patterns, keyword frequency) for anomaly detection. | Feature Engineering + Random Forest | `exp6_confusion_matrix.png`, `exp6_feature_importance.png`, `exp6_rf_model.pkl` |
+The programs mainly focus on network traffic analysis, DDoS detection, cyber attack classification, and malicious/phishing URL detection using different machine learning and data analysis techniques.
 
 ---
 
-## 📁 Directory Structure
+## 📚 Experiments
 
-```
-MLCS LAB PROGRAM/
-├── exp1.py                            # Experiment 1: Time Series Decomposition
-├── exp2.py                            # Experiment 2: ARIMA Traffic Forecasting & DDoS Anomaly Detection
-├── exp3.py                            # Experiment 3: Cyber Attack Classification (Random Forest)
-├── exp4.py                            # Experiment 4: Phishing URL Detection (TF-IDF + Logistic Regression)
-├── exp5.py                            # Experiment 5: Malicious URL Detection (SVM Classifier)
-├── exp6.py                            # Experiment 6: URL Abnormal Pattern Detection (Feature Engineering)
-├── activity1.py                       # Extended Network Traffic Analysis & Anomaly Detection
-├── ddos_timeseries_analysis.py        # DDoS Time Series Analysis Script
-├── activity1_report.md                # Network Traffic Anomaly Analysis Report
+| No. | Experiment | Technique Used |
+|-----|------------|----------------|
+| 1 | Time Series Decomposition | Additive Time Series Decomposition |
+| 2 | Network Traffic Forecasting & DDoS Detection | ARIMA |
+| 3 | Cyber Attack Classification | Random Forest |
+| 4 | Phishing URL Detection | TF-IDF + Logistic Regression |
+| 5 | Malicious URL Classification | TF-IDF + SVM |
+| 6 | URL Abnormal Pattern Detection | Feature Engineering + Random Forest |
+
+---
+
+## 🔍 What This Repository Covers
+
+### Experiment 1 – Time Series Decomposition
+Network traffic data is separated into different components such as:
+
+- Trend
+- Seasonal component
+- Residual
+
+This helps in understanding unusual changes and traffic spikes.
+
+### Experiment 2 – DDoS Detection
+An ARIMA model is used to analyze and forecast network traffic. Unexpected differences between predicted and actual traffic can be used to identify possible anomalies.
+
+### Experiment 3 – Cyber Attack Classification
+Network traffic data is classified into normal and attack categories using a Random Forest classifier.
+
+### Experiment 4 – Phishing URL Detection
+URLs are converted into numerical features using TF-IDF character n-grams and classified using Logistic Regression.
+
+### Experiment 5 – Malicious URL Detection
+A larger balanced URL dataset is used with TF-IDF features and an SVM classifier to identify potentially malicious URLs.
+
+### Experiment 6 – URL Pattern Analysis
+Additional URL features are extracted, including:
+
+- URL length
+- Hostname length
+- Shannon entropy
+- IP address patterns
+- Suspicious keyword frequency
+
+These features are then used with a Random Forest model for classification.
+
+---
+
+## 📁 Files in the Repository
+
+```text
+MLCS-LAB-PROGRAM/
 │
-├── DDoS_dataset.csv                   # Synthetic DDoS Time Series Network Traffic Data
-├── cyber_attacks.csv                  # Network Flow Cyber Attack Dataset
-├── urls_dataset.csv                   # Sample Phishing/Legitimate URL Dataset
-├── Time-Series_Network_logs.csv       # High-granularity Network Logs
-├── balanced_urls.csv                  # Large-scale Balanced URL Dataset
+├── exp1.py
+├── exp2.py
+├── exp3.py
+├── exp4.py
+├── exp5.py
+├── exp6.py
 │
-├── *.png                              # Output Visualizations & Confusion Matrices
-├── *.pkl                              # Trained Models & Vectorizers
-├── requirements.txt                   # Python Dependencies
-└── README.md                          # Documentation
-```
-
----
-
-## 🚀 Getting Started
-
-### 1. Prerequisites
-Ensure Python 3.8+ is installed. Clone the repository and install dependencies:
-
-```bash
-git clone https://github.com/bhoomi423/MLCS-LAB-PROGRAM.git
-cd MLCS-LAB-PROGRAM
-pip install -r requirements.txt
-```
-
-### 2. Running the Experiments
-
-#### Experiment 1: Time Series Decomposition
-```bash
-python exp1.py
-```
-
-#### Experiment 2: Network Traffic Forecasting & DDoS Detection
-```bash
-python exp2.py
-```
-
-#### Experiment 3: Cyber Attack Classification
-```bash
-python exp3.py
-```
-
-#### Experiment 4: Phishing URL Detection
-```bash
-python exp4.py
-```
-
-#### Experiment 5: SVM Malicious URL Classifier
-```bash
-python exp5.py
-```
-
-#### Experiment 6: Feature-Engineered URL Anomaly Detection
-```bash
-python exp6.py
-```
-
----
-
-## 📊 Summary of Models & Results
-
-- **Time Series Anomaly Detection (Exp 1 & Exp 2)**: Effectively isolates transient DDoS traffic spikes from underlying normal network usage.
-- **Supervised Attack Classification (Exp 3)**: Random Forest ensemble model achieves high precision in categorizing attack vs normal network flows.
-- **NLP & Lexical URL Classifiers (Exp 4, Exp 5, Exp 6)**: Multi-stage evaluation using TF-IDF n-grams (3-5 char length), Shannon entropy analysis, and SVM/Random Forest models to flag malicious domain patterns.
-
----
-
-## 📜 License
-This repository is created for educational and academic laboratory work.
+├── activity1.py
+├── ddos_timeseries_analysis.py
+├── activity1_report.md
+│
+├── DDoS_dataset.csv
+├── cyber_attacks.csv
+├── urls_dataset.csv
+├── Time-Series_Network_logs.csv
+├── balanced_urls.csv
+│
+├── *.png
+├── *.pkl
+│
+├── requirements.txt
+└── README.md
